@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController2!{% endblock %}
+
+{% block body %}
+<style>
+    body{
+        background-color: gray;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+</div>
+{% set users = ["Tom", "Jerry", "Alice"] %}
+{% for user in users %}
+    {{user | upper}}
+{% endfor %} <br>
+{{"now" | date("m/d/y")}} <br>
+{{"now" | date('d/m/y','Europe/Paris')}} <br>
+{{"now" | date('d/m/y H:i:s','Europe/Paris')}}
+{% endblock %}
