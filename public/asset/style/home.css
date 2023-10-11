@@ -1,0 +1,21 @@
+.contenaire{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card{
+    width: 300px;
+    margin: 30px 0;
+}
+.imgContenaire{
+    width: 90%;
+    margin: auto;
+}
+.img{
+    width: 100%;
+    margin: 15px 0;
+}
+.desc{
+    overflow: auto;
+    height: 200px;
+}

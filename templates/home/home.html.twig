@@ -19,4 +19,30 @@
 {{"now" | date("m/d/y")}} <br>
 {{"now" | date('d/m/y','Europe/Paris')}} <br>
 {{"now" | date('d/m/y H:i:s','Europe/Paris')}}
+<div class="row">
+        {% for article in articles %}
+        <div class="card col-md-4" style="width: 18rem;">
+            <p class="date">{{ article.createdAt | date("d/m/y")}}</p>
+            <img src="{{article.image}}" class="card-img-top" alt="{{ article.title }}">
+            <div class="card-body">
+              <h5 class="card-title"> {{article.title }}</h5>
+              <a href="{{ path('app_show', {'id': article.id}) }}" class="btn btn-primary">En Savoir plus</a>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+    {# <div class="contenaire">
+    {% for article in articles %}
+        <div class="card">
+            <div class="imgContenaire">
+                <img src="{{ article.image }}" alt="" class="img">
+            </div>
+            <div class="desc">
+                {{ article.title }} <br>
+                {{ article.content }} 
+
+            </div>
+        </div>
+    {% endfor %}
+</div> #}
 {% endblock %}
