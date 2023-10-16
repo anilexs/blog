@@ -11,7 +11,7 @@
 </div>
 <div class="container">
     <div class="img-fluid">
-        <img src="{{article.image}}" alt="{{ article.title }}">
+        <img src="{{ asset('asset/img/articles/') ~ article.image }}" alt="{{ article.title }}">
     </div>
     <div class="content">
         <p class="date">Ecrit le {{ article.createdAt | date("d/m/y")  }} à {{ article.createdAt | date("H:m") }}</p>
