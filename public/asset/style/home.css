@@ -1,21 +1,19 @@
 .contenaire{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
-.card{
-    width: 300px;
-    margin: 30px 0;
-}
-.imgContenaire{
-    width: 90%;
+.row{
+    width: 70%;
     margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
-.img{
-    width: 100%;
-    margin: 15px 0;
+.categories{
+    width: 30%;
+    height: 50px;
+    background-color: red;
 }
-.desc{
-    overflow: auto;
-    height: 200px;
+.categories a{
+    text-decoration: none;
+    color: aqua;
 }

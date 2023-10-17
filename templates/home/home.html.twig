@@ -9,7 +9,7 @@
     }
 </style>
 
-<div class="example-wrapper">
+{# <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 </div>
 {% set users = ["Tom", "Jerry", "Alice"] %}
@@ -18,19 +18,34 @@
 {% endfor %} <br>
 {{"now" | date("m/d/y")}} <br>
 {{"now" | date('d/m/y','Europe/Paris')}} <br>
-{{"now" | date('d/m/y H:i:s','Europe/Paris')}}
-<div class="row">
-        {% for article in articles %}
-        <div class="card col-md-4" style="width: 18rem;">
-            <p class="date">{{ article.createdAt | date("d/m/y")}}</p>
-            <img src="{{ asset('asset/img/articles/') ~ article.image }}" class="card-img-top" alt="{{ article.title }}">
-            <div class="card-body">
-              <h5 class="card-title"> {{article.title }}</h5>
-              <a href="{{ path('app_show', {'id': article.id}) }}" class="btn btn-primary">En Savoir plus</a>
-            </div>
-          </div>
-        {% endfor %}
-    </div>
+{{"now" | date('d/m/y H:i:s','Europe/Paris')}} #}
+<h3>Page Acceuil</h3>
+<div class="contenaire">
+    <div class="row">
+            {% for article in articles %}
+            <div class="card col-md-4" style="width: 18rem;">
+                <p class="date">Ecrit le {{ article.createdAt | date("d/m/y")}} A {{"now" | date('H:i:s','Europe/Paris')}} par {{article.user}}</p>
+                <img src="{{ asset('asset/img/articles/') ~ article.image }}" class="card-img-top" alt="{{ article.title }}">
+                <div class="card-body">
+                  <h5 class="card-title"> {{article.title }}</h5>
+                  <a href="{{ path('app_show', {'id': article.id}) }}" class="btn btn-primary">En Savoir plus</a>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+          <h2>Catégories</h2>
+          <ul class="list-group">
+              {% for categorie in categories %}
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <a href="{{path('show_articles_category', {'id': categorie.id})}}">{{ categorie.title }}
+                          <span class="badge bg-primary rounded-pill">{{ categorie.articles | length }} article(s)</span>
+                      </a>
+                  </li>
+              {% endfor %}
+          </ul>
+      </div>
+</div>
     {# <div class="contenaire">
     {% for article in articles %}
         <div class="card">
