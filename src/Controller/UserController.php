@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
@@ -19,15 +20,21 @@ class UserController extends AbstractController
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Hash the password
+            $hashedPassword = password_hash($user->getPassword(), PASSWORD_BCRYPT);
+            $user->setPassword($hashedPassword);
+
             $entityManager->persist($user);
             $entityManager->flush();
-            
-            return $this->redirectToRoute("app_home");
+
+            return $this->redirectToRoute("app_login");
         }
+
         return $this->render('user/user.html.twig', [
             'controller_name' => 'UserController',
             'user' => $form->createView(),
         ]);
     }
 }
+
